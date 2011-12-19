@@ -4,6 +4,15 @@ set hidden
 let s:ext_vimfiles_dir = expand('<sfile>:h')
 execute 'source ' . s:ext_vimfiles_dir . '/load_plugins.vim'
 
+" for clang_complete
+if exists('g:my_clang_bin_dir')
+	let g:clang_exec = g:my_clang_bin_dir . '/clang.exe'
+endif
+if exists('g:my_clang_lib_dir')
+	let g:clang_library_path = g:my_clang_lib_dir . '/libclang.dll'
+endif
+
+
 "colo molokai
 colo darkblue
 
