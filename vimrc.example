@@ -5,3 +5,24 @@ if has('win32')
 	let g:my_clang_bin_dir = 'S:\ruiheng\tools\clang'
 	let g:my_clang_lib_dir = 'S:\ruiheng\tools\clang'
 endif
+
+"set tenc=gbk
+
+" don't need help windows to be restored
+set sessionoptions-=help
+
+" always persist Vim's window size
+set sessionoptions+=resize
+
+" see
+" http://vim.1045645.n5.nabble.com/How-to-store-the-color-scheme-td1172369.html
+nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
+           \ :call writefile(
+           \   ['set bg='.&bg, 'color '.colors_name],
+           \   fnamemodify(v:this_session, ':p:r') . 'x.vim')<CR> 
+
+" for 'session' plugin
+let g:session_autosave = 'yes'
+if has('win32')
+	let g:session_directory = 's:\ruiheng\vimfiles\sessions'
+endif
