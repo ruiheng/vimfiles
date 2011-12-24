@@ -1,4 +1,11 @@
-let s:ext_vimfiles_dir = 's:\ruiheng\vim\vimfiles'
+
+if has('win32')
+	let s:ext_vimfiles_dir = 's:\ruiheng\vim\vimfiles'
+else
+	let s:ext_vimfiles_dir = '~/vimfiles'
+endif
+
+
 execute 'source ' . s:ext_vimfiles_dir . '/rc.vim'
 
 if has('win32')
@@ -24,5 +31,5 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
 " for 'session' plugin
 let g:session_autosave = 'yes'
 if has('win32')
-	let g:session_directory = 's:\ruiheng\vimfiles\sessions'
+	let g:session_directory = s:ext_vimfiles_dir . '/sessions'
 endif
