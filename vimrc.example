@@ -1,40 +1,25 @@
-let s:ext_vimfiles_dir = 's:\ruiheng\vim\vimfiles'
-execute 'source ' . s:ext_vimfiles_dir . '/rc.vim'
+" all we need to do here is just one simple sourcecommand:
+" source <path_to_vimfiles_project>/rc_entry.vim
+"
+" all works are done in rc_entry.vim.
+"
+" but to make this vimrc file work as portable as possible,
+" (so that I can copy around, without minimal modifications)
+" use a loop to test a list of possible values.
 
-if has('win32')
-	let g:my_clang_bin_dir = 'S:\ruiheng\tools\clang'
-	let g:my_clang_lib_dir = 'S:\ruiheng\tools\clang'
+" this is just a list of possible values for all my computers,
+" you should change to your favorite.
+let s:vimfiles_project_dir_list = [
+	\'D:\MyData\vimfiles',
+	\'S:\ruiheng\vim\vimfiles',
+	\]
+
+for s:dir in s:vimfiles_project_dir_list
+	if isdirectory(s:dir)
+		let s:vimfiles_project_dir = s:dir
+		break
+	endif
+endfor
+if exists('s:vimfiles_project_dir')
+	execute 'source ' . s:vimfiles_project_dir . '/rc_entry.vim'
 endif
-
-"set tenc=gbk
-
-" don't need help windows to be restored
-set sessionoptions-=help
-
-" always persist Vim's window size
-set sessionoptions+=resize
-
-" see
-" http://vim.1045645.n5.nabble.com/How-to-store-the-color-scheme-td1172369.html
-nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
-           \ :call writefile(
-           \   ['set bg='.&bg, 'color '.colors_name],
-           \   fnamemodify(v:this_session, ':p:r') . 'x.vim')<CR> 
-
-" for 'session' plugin
-let g:session_autosave = 'yes'
-if has('win32')
-	let g:session_directory = 's:\ruiheng\vimfiles\sessions'
-endif
-
-
-" ====== for vimwiki == begin ==
-let wiki_1 = {}
-let wiki_1.path = 'z:/svn/vimwiki/default'
-
-let g:vimwiki_list = [wiki_1]
-
-" because ctrl-space will toggle IME
-map <leader>tt <Plug>VimwikiToggleListItem
-
-" ====== for vimwiki == end ==
