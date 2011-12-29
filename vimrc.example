@@ -26,3 +26,15 @@ let g:session_autosave = 'yes'
 if has('win32')
 	let g:session_directory = 's:\ruiheng\vimfiles\sessions'
 endif
+
+
+" ====== for vimwiki == begin ==
+let wiki_1 = {}
+let wiki_1.path = 'z:/svn/vimwiki/default'
+
+let g:vimwiki_list = [wiki_1]
+
+" because ctrl-space will toggle IME
+map <leader>tt <Plug>VimwikiToggleListItem
+
+" ====== for vimwiki == end ==
