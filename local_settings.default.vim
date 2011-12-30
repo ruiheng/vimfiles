@@ -1,15 +1,22 @@
-" on windows, I put all those 'tools' program under one dir
-" this is a list of possible values on all my computers.
+" We need to define some global variables the is truely local to the system,
+" and those variables will be used in other vim source file,
+" so must be defined early.
+" most of these variables are paths.
+" This file contains the default values of these variables and
+" commented with their purpose (served as docs).
 
-let s:tools_dir_list = [
-	\'D:\tools',
-	\'S:\ruiheng\tools',
-	\]
-if has('win32')
-	for s:tools_dir in s:tools_dir_list
-		if isdirectory(s:tools_dir)
-			let g:win_tools_dir = s:tools_dir
-			break
-		endif
-	endfor
-endif
+
+"
+" on windows, put all those 'tools' program under one dir
+"
+" g:win_tools_dir_list is just a list of possible values for all your computers,
+" if this variable defined, here vim will choose the first one that exists.
+" you can override with your own in ~/vimfiles/local_settings.vim,
+" or predefine it in your .vimrc/_vimrc before rc_entry.vim
+" example:
+"
+"	let g:win_tools_dir_list = [
+"		\'D:\tools',
+"		\'S:\ruiheng\tools',
+"		\]
+

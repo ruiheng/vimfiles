@@ -2,22 +2,28 @@
 
 let s:ext_vimfiles_dir = expand('<sfile>:h')
 
+function s:source_if_readable(filename)
+	if filereadable(a:filename)
+		exec 'source ' . a:filename
+	endif
+endfunction
+
 " local default var values
-if filereadable(s:ext_vimfiles_dir . '/local_settings.default.vim')
-	exec 'source ' . s:ext_vimfiles_dir . '/local_settings.default.vim'
-endif
+call s:source_if_readable(s:ext_vimfiles_dir . '/local_settings.default.vim')
 
 " user can use ~/local_settings.vim file to set some vars
 " that is truely local to current system.
-if filereadable(expand('~/local_settings.vim'))
-	source ~/local_settings.vim
+call s:source_if_readable(expand('~/vimfiles/local_settings.vim'))
+
+
+if has('win32') && exists('g:win_tools_dir_list') && !exists('g:win_tools_dir')
+	for s:tools_dir in g:win_tools_dir_list
+		if isdirectory(s:tools_dir)
+			let g:win_tools_dir = s:tools_dir
+			break
+		endif
+	endfor
 endif
-
-" here begins our main comment settings.
-
-set hidden
-
-execute 'source ' . s:ext_vimfiles_dir . '/load_plugins.vim'
 
 " for clang_complete
 if has('win32')
@@ -29,26 +35,30 @@ if has('win32')
 	endif
 endif
 
-if exists('g:my_clang_bin_dir')
+if !exists('g:clang_exec') && exists('g:my_clang_bin_dir')
 	let g:clang_exec = g:my_clang_bin_dir . '/clang.exe'
 endif
-if exists('g:my_clang_lib_dir')
+if !exists('g:clang_library_path') && exists('g:my_clang_lib_dir')
 	let g:clang_library_path = g:my_clang_lib_dir . '/libclang.dll'
 endif
 
+execute 'source ' . s:ext_vimfiles_dir . '/load_plugins.vim'
 
-"colo molokai
-colo darkblue
 
-" depends on terminal settings
-"set tenc=gbk
+" .........    here begins our real vim settings ..........
+
+set hidden
+
 
 " remember more command history
 set history=1000
 
 " we always use utf-8 as the internal char encoding of vim.
 " but 'tenc' should depends on the system's locale
-let &tenc = &enc	" because 'enc' defaults is set according to env.
+if &tenc == ''
+	let &tenc = &enc	" because 'enc' defaults is set according to env.
+endif
+
 set enc=utf-8
 set fileencodings=gbk,utf-8
 
@@ -102,15 +112,9 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
            \   ['set bg='.&bg, 'color '.colors_name],
            \   fnamemodify(v:this_session, ':p:r') . 'x.vim')<CR> 
 
-" for 'session' plugin
-let g:session_autosave = 'yes'
-if has('win32')
-	let g:session_directory = 's:\ruiheng\vimfiles\sessions'
-endif
-
 
 " ====== for taglist == begin ==
-if !exists('Tlist_Ctags_Cmd') || !executable('Tlist_Ctags_Cmd')
+if !exists('Tlist_Ctags_Cmd') || !executable(Tlist_Ctags_Cmd)
 	" if user has not set this Tlist_Ctags_Cmd
 	if has("win32")
 		if exists('g:win_tools_dir')
@@ -129,10 +133,6 @@ set tags=tags;
 
 
 " ====== for vimwiki == begin ==
-let wiki_1 = {}
-let wiki_1.path = 'z:/svn/vimwiki/default'
-
-let g:vimwiki_list = [wiki_1]
 
 " because ctrl-space will toggle IME
 map <leader>tt <Plug>VimwikiToggleListItem
@@ -145,7 +145,5 @@ map <leader>tt <Plug>VimwikiToggleListItem
 
 " user can use ~/local.vimrc to adjust some settings finally.
 " for example, override some settings above.
-if filereadable(expand('~/local.vimrc'))
-	source ~/local.vimrc
-endif
+call s:source_if_readable(expand('~/vimfiles/final_settings.vim'))
 
