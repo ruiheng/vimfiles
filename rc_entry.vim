@@ -4,7 +4,7 @@ let s:ext_vimfiles_dir = expand('<sfile>:h')
 
 function s:source_if_readable(filename)
 	if filereadable(a:filename)
-		exec 'source ' . a:filename
+		exec 'source ' . fnameescape(a:filename)
 	endif
 endfunction
 
@@ -42,8 +42,12 @@ if !exists('g:clang_library_path') && exists('g:my_clang_lib_dir')
 	let g:clang_library_path = g:my_clang_lib_dir . '/libclang.dll'
 endif
 
-execute 'source ' . s:ext_vimfiles_dir . '/load_plugins.vim'
+execute 'source ' . fnameescape(s:ext_vimfiles_dir) . '/load_plugins.vim'
 
+" some settings may depend on the plugins loaded,
+" put those settings in some files in a special dir,
+" so that they are sourced at last.
+execute 'set rtp+=' . fnameescape(s:ext_vimfiles_dir) . '/fixed/after'
 
 " .........    here begins our real vim settings ..........
 
@@ -113,31 +117,8 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
            \   fnamemodify(v:this_session, ':p:r') . 'x.vim')<CR> 
 
 
-" ====== for taglist == begin ==
-if !exists('Tlist_Ctags_Cmd') || !executable(Tlist_Ctags_Cmd)
-	" if user has not set this Tlist_Ctags_Cmd
-	if has("win32")
-		if exists('g:win_tools_dir')
-			" assuming that ctags is installed under 'tools' dir
-			let Tlist_Ctags_Cmd = g:win_tools_dir. '\ctags.exe'
-		endif
-	else
-		" for unix
-		let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-	endif
-endif
-
 " the trailing ';' is magic
 set tags=tags;
-" ====== for taglist == end ==
-
-
-" ====== for vimwiki == begin ==
-
-" because ctrl-space will toggle IME
-map <leader>tt <Plug>VimwikiToggleListItem
-
-" ====== for vimwiki == end ==
 
 
 " .................... all settings ends ..............................
