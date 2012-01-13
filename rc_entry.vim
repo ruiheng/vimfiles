@@ -42,6 +42,36 @@ if !exists('g:clang_library_path') && exists('g:my_clang_lib_dir')
 	let g:clang_library_path = g:my_clang_lib_dir . '/libclang.dll'
 endif
 
+" ====== for taglist == begin ==
+
+" taglist plugin checks that Exuberant ctags command before loading,
+" so we must set Tlist_Ctags_Cmd to a working value before loading plugins.
+if !exists('Tlist_Ctags_Cmd') || !executable(Tlist_Ctags_Cmd)
+	" if user has not set this Tlist_Ctags_Cmd correctly,
+	" check if exuberant-ctags/exctags/ctags exists in PATH
+	let s:ctags_cmds = [ 'exuberant-ctags', 'exctags', 'ctags' ]
+	let s:ctags_found = 0
+	for s:ctags in s:ctags_cmds
+		if executable(s:ctags)
+			let s:ctags_found = 1
+			break
+		endif
+	endfor
+	if !s:ctags_found
+		if has("win32")
+			if exists('g:win_tools_dir')
+				" assumes that ctags is installed under 'tools' dir
+				let Tlist_Ctags_Cmd = g:win_tools_dir. '\ctags.exe'
+			endif
+		else
+			" for unix
+			let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+		endif
+	endif
+endif
+
+" ====== for taglist == end ==
+
 execute 'source ' . fnameescape(s:ext_vimfiles_dir) . '/load_plugins.vim'
 
 " some settings may depend on the plugins loaded,
@@ -105,6 +135,9 @@ endif
 
 " don't need help windows to be restored
 set sessionoptions-=help
+
+" don't restore empty windows
+set sessionoptions-=blank
 
 " always persist Vim's window size
 set sessionoptions+=resize

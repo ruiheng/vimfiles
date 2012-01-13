@@ -30,21 +30,11 @@ endif
 
 " ====== for vimwiki == end ==
 
-" ====== for taglist == begin ==
 
-if !exists('loaded_taglist')
-	if !exists('Tlist_Ctags_Cmd') || !executable(Tlist_Ctags_Cmd)
-		" if user has not set this Tlist_Ctags_Cmd
-		if has("win32")
-			if exists('g:win_tools_dir')
-				" assumes that ctags is installed under 'tools' dir
-				let Tlist_Ctags_Cmd = g:win_tools_dir. '\ctags.exe'
-			endif
-		else
-			" for unix
-			let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-		endif
-	endif
+" ========= for capslock == begin ==
+
+if (exists("g:loaded_capslock") && g:loaded_capslock) || &cp
+	set statusline+=%{exists('*CapsLockSTATUSLINE')?CapsLockSTATUSLINE():''}
 endif
 
-" ====== for taglist == end ==
+" ========= for capslock == end ==
