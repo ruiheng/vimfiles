@@ -1,4 +1,4 @@
-" all we need to do here is just one simple sourcecommand:
+" all we need to do here is just one simple source command:
 " source <path_to_vimfiles_project>/rc_entry.vim
 "
 " all works are done in rc_entry.vim.
@@ -12,10 +12,11 @@
 let s:vimfiles_project_dir_list = [
 	\'D:\MyData\vimfiles',
 	\'S:\ruiheng\vim\vimfiles',
+	\'~/vimfiles',
 	\]
-
+echo
 for s:dir in s:vimfiles_project_dir_list
-	if isdirectory(s:dir)
+	if isdirectory(expand(s:dir))
 		let s:vimfiles_project_dir = s:dir
 		break
 	endif

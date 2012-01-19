@@ -1,3 +1,7 @@
 *.swp
 *.pyc
 *.pyo
+.netrwhist
+
+# soft links
+local_settings.vim
