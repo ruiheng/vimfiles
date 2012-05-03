@@ -116,6 +116,7 @@ if has('gui_running')
 else
 	set mouse=a
 	set ttymouse=xterm2
+	set t_Co=256
 endif
 
 " from
