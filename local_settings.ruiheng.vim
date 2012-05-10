@@ -10,8 +10,10 @@ if !exists('g:win_tools_dir_list')
 		\]
 endif
 
-"colo molokai
-colo darkblue
+if has('gui_running')
+	colo darkblue
+else
+endif
 
 " for 'session' plugin
 let g:session_autosave = 'yes'
