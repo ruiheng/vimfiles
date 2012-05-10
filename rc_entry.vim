@@ -114,9 +114,11 @@ filetype plugin on
 if has('gui_running')
 	set go-=T
 else
-	set mouse=a
-	set ttymouse=xterm2
-	set t_Co=256
+	if has('unix')
+		set mouse=a
+		set ttymouse=xterm2
+		set t_Co=256
+	endif
 endif
 
 " from
