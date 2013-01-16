@@ -156,6 +156,7 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
 " the trailing ';' is magic
 set tags=tags;
 
+autocmd FileType haskell setlocal expandtab
 
 " .................... all settings ends ..............................
 
