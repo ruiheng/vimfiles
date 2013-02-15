@@ -1,0 +1,6 @@
+[submodule "available/zencoding"]
+	path = available/zencoding
+	url = git://github.com/mattn/zencoding-vim.git
+[submodule "available/hoogle"]
+	path = available/hoogle
+	url = git://github.com/mattn/zencoding-vim.git
