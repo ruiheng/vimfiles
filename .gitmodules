@@ -4,3 +4,4 @@
 [submodule "available/hoogle"]
 	path = available/hoogle
 	url = git://github.com/mattn/zencoding-vim.git
+	ignore = dirty
