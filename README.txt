@@ -32,13 +32,13 @@ Vim plug-ins are in `available` dir. one subdir should be used for one plugin.
 
 All plug-ins are disabled by default. To enable a plugin, you just need to create a symbolic link in `bundle` dir to the corresponding subdir in `available`. To disable it again, just remove that symbolic link.
 
-NOTES: On windows vista or later, you can `mklink` command to create symbolic links. (But need administrator privileges)
+NOTES: On windows vista or later, you can `mklink` command to create symbolic links. But need administrator privileges. See enable-plugin.bat for example.
 
 
 Example Usage
 ==============
 
-For example, this is what I needs to do on a newly installed system:
+For example, this is what I need to do on a newly installed system:
 
   * create symbolic link ~/vimfiles/local_settings.vim ,
     points to <vimfiles_project>/local_settings.ruiheng.vim .
