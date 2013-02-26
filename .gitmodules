@@ -7,3 +7,9 @@
 [submodule "available/fuzzyfinder"]
 	path = available/fuzzyfinder
 	url = git://github.com/vim-scripts/FuzzyFinder.git
+[submodule "available/l9"]
+	path = available/l9
+	url = git://github.com/vim-scripts/L9.git
+[submodule "surround"]
+	path = surround
+	url = git://github.com/tpope/vim-surround.git
