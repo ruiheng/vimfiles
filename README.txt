@@ -4,6 +4,10 @@
 
 This is a set of files used as my vim configuration. It contains files that probably be useful to other VIM users.
 
+NOTE: Because 'git submodule' is used, if some submodule is added after you cloned the git repository, you need to run:
+> git submodule update --init
+Otherwise, some directories may be missing.
+
 Settings
 ============
 
