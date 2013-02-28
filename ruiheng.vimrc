@@ -15,7 +15,7 @@ let s:vimfiles_project_dir_list = [
 	\'S:\ruiheng\vim\vimfiles',
 	\'~/vimfiles',
 	\]
-echo
+
 for s:dir in s:vimfiles_project_dir_list
 	if isdirectory(expand(s:dir))
 		let s:vimfiles_project_dir = s:dir
