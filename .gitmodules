@@ -13,3 +13,6 @@
 [submodule "available/surround"]
 	path = available/surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "available/hoogle"]
+	path = available/hoogle
+	url = git://github.com/Twinside/vim-hoogle.git
