@@ -10,6 +10,7 @@
 " this is just a list of possible values for all my computers,
 " you should change to your favorite.
 let s:vimfiles_project_dir_list = [
+	\'D:\devel\vimfiles',
 	\'D:\MyData\vimfiles',
 	\'S:\ruiheng\vim\vimfiles',
 	\'~/vimfiles',
