@@ -22,3 +22,6 @@
 	path = available/hoogle
 	url = git://github.com/Twinside/vim-hoogle.git
 	ignore = dirty
+[submodule "available/haskell-html-template-syntax"]
+	path = available/haskell-html-template-syntax
+	url = git://github.com/pbrisbin/html-template-syntax.git
