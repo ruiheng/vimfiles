@@ -16,6 +16,15 @@ let s:vimfiles_project_dir_list = [
 	\'~/vimfiles',
 	\]
 
+" bundles in this list will be loaded, don't need to create symblic
+" link in 'bundle' dir.
+let g:load_bundles = [
+	\'l9',
+	\'fuzzyfinder',
+	\'surround',
+	\'repeat',
+	\]
+
 for s:dir in s:vimfiles_project_dir_list
 	if isdirectory(expand(s:dir))
 		let s:vimfiles_project_dir = s:dir
@@ -23,5 +32,6 @@ for s:dir in s:vimfiles_project_dir_list
 	endif
 endfor
 if exists('s:vimfiles_project_dir')
+	let g:vimfiles_username = 'ruiheng'
 	execute 'source ' . s:vimfiles_project_dir . '/rc_entry.vim'
 endif

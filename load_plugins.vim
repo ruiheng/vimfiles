@@ -1,6 +1,9 @@
 execute 'source ' . expand('<sfile>:h') . '/available/pathogen/autoload/pathogen.vim'
 
-call pathogen#infect(expand('<sfile>:h') . '/bundle')
+if exists('g:load_bundles')
+	for s:p in g:load_bundles
+		call pathogen#surround(expand('<sfile>:h') . '/available/' . s:p)
+	endfor
+endif
 
-nmap <leader>fb :FufBuffer<cr>
-nmap <leader>ff :FufFile<cr>
+call pathogen#infect(expand('<sfile>:h') . '/bundle/{}')

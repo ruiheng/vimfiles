@@ -11,15 +11,17 @@ Otherwise, some directories may be missing.
 Settings
 ============
 
+NOTE: <username> is the value of variable 'g:vimfiles_username'.
+
 The following files should be common to all users:
 
   * rc_entry.vim : entry point
-  * local_settings.default.vim : settings that is loaded before plugins loads.
+  * local_settings.default.vim : settings that is loaded before any plugin loads.
   * fixed/plugin/after_plugins_loaded.vim : settings that is loaed after all plugins have been loaded.
 
-Real personal settings should be in (all are optional):
+Real personal settings should be in (all of the following files are optional):
 
-  * ~/vimfiles/local_settings.vim : loaded right after local_settings.default.vim 
+  * local_settings.<username>.vim or ~/vimfiles/local_settings.vim : loaded right after local_settings.default.vim 
   * ~/vimfiles/final_settings.vim : loaded at final stage, can override everythin.
 
 In other words:
@@ -32,11 +34,17 @@ In other words:
 Plug-ins
 ============
 
-Vim plug-ins are in `available` dir. one subdir should be used for one plugin.
+Vim plug-ins are in `available` dir. one subdir should be used for one plugin. They are called bundles in 'pathogen'.
 
-All plug-ins are disabled by default. To enable a plugin, you just need to create a symbolic link in `bundle` dir to the corresponding subdir in `available`. To disable it again, just remove that symbolic link.
+All plug-ins are disabled by default. To enable a plugin, you need to do one of the followings:
 
-NOTES: On windows vista or later, you can `mklink` command to create symbolic links. But need administrator privileges. See enable-plugin.bat for example.
+ * create a symbolic link in `bundle` dir to the corresponding subdir in `available`.
+   To disable it again, just remove that symbolic link.
+
+   NOTES: On windows vista or later, you can `mklink` command to create symbolic links. But need administrator privileges. See enable-plugin.bat for example.
+
+ * create a variable 'g:load_bundles', which contains a list of names of bundles, which will be loaded. This is a little easier to use than symbolic link on Windows.
+   See ruiheng.vimrc for example.
 
 
 Example Usage
@@ -44,10 +52,10 @@ Example Usage
 
 For example, this is what I need to do on a newly installed system:
 
-  * create symbolic link ~/vimfiles/local_settings.vim ,
-    points to <vimfiles_project>/local_settings.ruiheng.vim .
-
   * create symbolic link ~/_vimrc or .vimrc or (you know what),
-    points to <vimfiles_project>/ruiheng.vimrc .
+    points to <vimfiles_project>/ruiheng.vimrc, in which a global variable
+    'g:vimfiles_username' is set to 'ruiheng'.
 
-  * create symbolic links in `bundle` dir, to choose plugins I need.
+    File <vimfiles_project>/local_settings.ruiheng.vim will be loaded.
+
+  * create symbolic links in `bundle` dir, to choose plugins/bundles that I need in addition to those in g:load_bundles.

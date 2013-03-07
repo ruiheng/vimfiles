@@ -8,12 +8,37 @@ function s:source_if_readable(filename)
 	endif
 endfunction
 
+function s:if_bundle_enabled(bundle_dirname)
+	for s:p in g:load_bundles
+		if s:p == a:bundle_dirname
+			return 1
+		endif
+	endfor
+	if isdirectory(s:ext_vimfiles_dir . '/bundle/'. a:bundle_dirname)
+		return 1
+	else
+		return 0
+	endif
+endfunction
+
+function s:load_bundle_settings(bundle_dirname)
+	if exists('g:vimfiles_username')
+		call s:source_if_readable(s:ext_vimfiles_dir . '/settings.' . g:vimfiles_username . '/' . a:bundle_dirname . '.vim')
+	else
+		call s:source_if_readable(expand('~/vimfiles/settings/' . a:bundle_dirname . '.vim'))
+	endif
+endfunction
+
 " local default var values
 call s:source_if_readable(s:ext_vimfiles_dir . '/local_settings.default.vim')
 
-" user can use ~/local_settings.vim file to set some vars
-" that is truely local to current system.
-call s:source_if_readable(expand('~/vimfiles/local_settings.vim'))
+" user can use 'local_settings' file to set some vars
+" that are truely local to current system.
+if exists('g:vimfiles_username')
+	call s:source_if_readable(s:ext_vimfiles_dir . '/local_settings.' . g:vimfiles_username . '.vim')
+else
+	call s:source_if_readable(expand('~/vimfiles/local_settings.vim'))
+endif
 
 
 if has('win32') && exists('g:win_tools_dir_list') && !exists('g:win_tools_dir')
@@ -76,7 +101,7 @@ execute 'source ' . fnameescape(s:ext_vimfiles_dir) . '/load_plugins.vim'
 
 " some settings may depend on the plugins loaded,
 " put those settings in some files in a special dir,
-" so that they are sourced at last.
+" so that they are sourced at last. (Deprecated )
 execute 'set rtp+=' . fnameescape(s:ext_vimfiles_dir) . '/fixed/after'
 
 " .........    here begins our real vim settings ..........
@@ -158,8 +183,21 @@ set tags=tags;
 
 autocmd FileType haskell setlocal expandtab ts=2 sts=2 sw=2
 
-" .................... all settings ends ..............................
+" .................... all 'standard' settings ends here .....................
 
+" ......... some default but plugin-depending settings begins .......
+
+if s:if_bundle_enabled('haskellmode')
+	au BufEnter *.hs compiler ghc
+	call s:load_bundle_settings('haskellmode')
+endif
+
+if s:if_bundle_enabled('fuzzyfinder')
+	nmap <leader>fb :FufBuffer<cr>
+	nmap <leader>ff :FufFile<cr>
+endif
+
+" ......... some 'standard' but plugin-dependent settings ends .......
 
 " user can use ~/local.vimrc to adjust some settings finally.
 " for example, override some settings above.
