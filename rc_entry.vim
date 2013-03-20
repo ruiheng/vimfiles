@@ -182,6 +182,7 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
 set tags=tags;
 
 autocmd FileType haskell setlocal expandtab ts=2 sts=2 sw=2
+autocmd FileType html setlocal noexpandtab ts=4 sts=4 sw=4 si
 
 " .................... all 'standard' settings ends here .....................
 
