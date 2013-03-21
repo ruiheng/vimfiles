@@ -178,6 +178,10 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
            \   fnamemodify(v:this_session, ':p:r') . 'x.vim')<CR> 
 
 
+" see
+" http://vim.wikia.com/wiki/Selecting_your_pasted_text
+nnoremap <expr> <F4> '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " the trailing ';' is magic
 set tags=tags;
 
@@ -196,6 +200,10 @@ endif
 if s:if_bundle_enabled('fuzzyfinder')
 	nmap <leader>fb :FufBuffer<cr>
 	nmap <leader>ff :FufFile<cr>
+endif
+
+if s:if_bundle_enabled('YankRing')
+	nnoremap <silent> <F11> :YRShow<CR>
 endif
 
 " ......... some 'standard' but plugin-dependent settings ends .......

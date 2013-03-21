@@ -59,3 +59,21 @@ For example, this is what I need to do on a newly installed system:
     File <vimfiles_project>/local_settings.ruiheng.vim will be loaded.
 
   * create symbolic links in `bundle` dir, to choose plugins/bundles that I need in addition to those in g:load_bundles.
+
+Mapped Keys
+============
+
+global
+--------
+<F6>: save session (to the last file named in :mks)
+<F4>: select the last changed (or pasted) text.
+
+fuzzyfinder
+-----------
+<leader>fb
+<leader>ff
+
+YankRing
+----------
+<F11>
+
