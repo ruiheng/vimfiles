@@ -177,6 +177,8 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
            \   ['set bg='.&bg, 'color '.colors_name],
            \   fnamemodify(v:this_session, ':p:r') . 'x.vim')<CR> 
 
+vmap <F2> "0p
+nmap <F2> viw"0p
 
 " see
 " http://vim.wikia.com/wiki/Selecting_your_pasted_text
@@ -185,8 +187,20 @@ nnoremap <expr> <F4> '`[' . strpart(getregtype(), 0, 1) . '`]'
 " the trailing ';' is magic
 set tags=tags;
 
-autocmd FileType haskell setlocal expandtab ts=2 sts=2 sw=2
-autocmd FileType html setlocal noexpandtab ts=4 sts=4 sw=4 si
+function MySetLocalTabStop (n)
+	exec 'setlocal ts=' . a:n . ' sts=' . a:n . ' sw=' . a:n
+endfunction
+
+nmap <leader>t2 :call MySetLocalTabStop(2)<CR>
+nmap <leader>t4 :call MySetLocalTabStop(4)<CR>
+nmap <leader>t8 :call MySetLocalTabStop(8)<CR>
+
+autocmd FileType haskell setlocal expandtab | call MySetLocalTabStop(2)
+autocmd FileType html setlocal noexpandtab si | call MySetLocalTabStop(4)
+autocmd BufEnter *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
+autocmd BufFilePost *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
+
+autocmd BufReadPre *.hs setlocal fencs=utf-8
 
 " .................... all 'standard' settings ends here .....................
 

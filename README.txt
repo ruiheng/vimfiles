@@ -67,6 +67,9 @@ global
 --------
 <F6>: save session (to the last file named in :mks)
 <F4>: select the last changed (or pasted) text.
+<leader>t8: set the following options to 8: 'sts' 'ts' 'sw'
+<leader>t4: set the following options to 4: 'sts' 'ts' 'sw'
+<leader>t2: set the following options to 2: 'sts' 'ts' 'sw'
 
 fuzzyfinder
 -----------
