@@ -5,5 +5,7 @@ if !exists('g:ghc')
 		let g:haddock_browser="cmd"
 		let g:haddock_browser_callformat = '%s /C start "%s"'
 	else
+		let g:ghc="/home/ruiheng/ghc-7.6.3-x86_64/bin/ghc"
+		let g:haddock_browser="links"
 	endif
 endif
