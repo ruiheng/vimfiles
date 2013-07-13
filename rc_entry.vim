@@ -195,7 +195,7 @@ nmap <leader>t2 :call MySetLocalTabStop(2)<CR>
 nmap <leader>t4 :call MySetLocalTabStop(4)<CR>
 nmap <leader>t8 :call MySetLocalTabStop(8)<CR>
 
-autocmd FileType haskell setlocal expandtab | call MySetLocalTabStop(2)
+autocmd FileType haskell setlocal expandtab | call MySetLocalTabStop(4)
 autocmd FileType html setlocal noexpandtab si | call MySetLocalTabStop(4)
 autocmd BufEnter *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
 autocmd BufFilePost *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
