@@ -119,7 +119,8 @@ if &tenc == ''
 endif
 
 set enc=utf-8
-set fileencodings=gbk,utf-8
+"a better test list, can handle most chinese file in china
+set fencs=ucs-bom,utf-8,gbk,default,latin1
 
 try
   lang en_US
