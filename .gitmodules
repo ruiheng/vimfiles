@@ -21,6 +21,7 @@
 [submodule "available/haskell-html-template-syntax"]
 	path = available/haskell-html-template-syntax
 	url = git://github.com/pbrisbin/html-template-syntax.git
+	ignore = dirty
 [submodule "available/YankRing"]
 	path = available/YankRing
 	url = git://github.com/vim-scripts/YankRing.vim.git
