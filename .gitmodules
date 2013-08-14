@@ -1,6 +1,6 @@
 [submodule "available/zencoding"]
 	path = available/zencoding
-	url = git://github.com/mattn/zencoding-vim.git
+	url = https://github.com/mattn/emmet-vim.git
 	ignore = dirty
 [submodule "available/pathogen"]
 	path = available/pathogen
