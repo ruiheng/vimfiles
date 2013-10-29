@@ -26,3 +26,6 @@
 	path = available/YankRing
 	url = git://github.com/vim-scripts/YankRing.vim.git
 	ignore = dirty
+[submodule "available/haskellFold"]
+	path = available/haskellFold
+	url = https://github.com/Twinside/vim-haskellFold.git
