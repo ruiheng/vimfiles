@@ -29,3 +29,6 @@
 [submodule "available/haskellFold"]
 	path = available/haskellFold
 	url = https://github.com/Twinside/vim-haskellFold.git
+[submodule "available/haml"]
+	path = available/haml
+	url = https://github.com/tpope/vim-haml.git
