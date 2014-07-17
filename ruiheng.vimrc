@@ -23,7 +23,12 @@ let g:load_bundles = [
 	\'fuzzyfinder',
 	\'surround',
 	\'repeat',
+	\'zencoding',
+	\'vimproc',
+	\'ghcmod',
 	\]
+
+let g:ghcmod_ghc_options = ['-package-db=' . expand('$HS_HOME') . '/lib/package.conf.d']
 
 for s:dir in s:vimfiles_project_dir_list
 	if isdirectory(expand(s:dir))

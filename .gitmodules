@@ -32,3 +32,9 @@
 [submodule "available/haml"]
 	path = available/haml
 	url = https://github.com/tpope/vim-haml.git
+[submodule "available/ghcmod"]
+	path = available/ghcmod
+	url = https://github.com/eagletmt/ghcmod-vim.git
+[submodule "available/vimproc"]
+	path = available/vimproc
+	url = https://github.com/Shougo/vimproc.vim.git
