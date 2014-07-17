@@ -38,3 +38,6 @@
 [submodule "available/vimproc"]
 	path = available/vimproc
 	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "available/vim-signature"]
+	path = available/vim-signature
+	url = https://github.com/kshenoy/vim-signature.git
