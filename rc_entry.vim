@@ -178,6 +178,8 @@ nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
            \   ['set bg='.&bg, 'color '.colors_name],
            \   fnamemodify(v:this_session, ':p:r') . 'x.vim')<CR> 
 
+imap <F6> <ESC><F6>
+
 vmap <F2> "0p
 nmap <F2> viw"0p
 
