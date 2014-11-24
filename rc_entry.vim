@@ -223,6 +223,11 @@ if s:if_bundle_enabled('YankRing')
 	nnoremap <silent> <F11> :YRShow<CR>
 endif
 
+if s:if_bundle_enabled('haskell-cabal')
+	nmap <F8> <F6>:Cabal build<CR>
+	imap <F8> <ESC><F8>
+endif
+
 " ......... some 'standard' but plugin-dependent settings ends .......
 
 " user can use ~/local.vimrc to adjust some settings finally.
