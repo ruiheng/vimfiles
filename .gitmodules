@@ -43,4 +43,4 @@
 	url = https://github.com/kshenoy/vim-signature.git
 [submodule "available/haskell-cabal"]
 	path = available/haskell-cabal
-	url = git@github.com:ruiheng/vim-haskell-cabal.git
+	url = https://github.com/ruiheng/vim-haskell-cabal.git
