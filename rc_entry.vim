@@ -25,7 +25,7 @@ function s:load_bundle_settings(bundle_dirname)
 	if exists('g:vimfiles_username')
 		call s:source_if_readable(s:ext_vimfiles_dir . '/settings.' . g:vimfiles_username . '/' . a:bundle_dirname . '.vim')
 	else
-		call s:source_if_readable(expand('~/vimfiles/settings/' . a:bundle_dirname . '.vim'))
+		call s:source_if_readable(s:ext_vimfiles_dir . '/settings/' . a:bundle_dirname . '.vim')
 	endif
 endfunction
 
@@ -37,7 +37,7 @@ call s:source_if_readable(s:ext_vimfiles_dir . '/local_settings.default.vim')
 if exists('g:vimfiles_username')
 	call s:source_if_readable(s:ext_vimfiles_dir . '/local_settings.' . g:vimfiles_username . '.vim')
 else
-	call s:source_if_readable(expand('~/vimfiles/local_settings.vim'))
+	call s:source_if_readable(s:ext_vimfiles_dir . '/local_settings.vim')
 endif
 
 
@@ -227,5 +227,4 @@ endif
 
 " user can use ~/local.vimrc to adjust some settings finally.
 " for example, override some settings above.
-call s:source_if_readable(expand('~/vimfiles/final_settings.vim'))
-
+call s:source_if_readable(s:ext_vimfiles_dir . '/final_settings.vim')
