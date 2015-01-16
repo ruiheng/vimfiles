@@ -44,3 +44,6 @@
 [submodule "available/haskell-cabal"]
 	path = available/haskell-cabal
 	url = https://github.com/ruiheng/vim-haskell-cabal.git
+[submodule "available/numbertoggle"]
+	path = available/numbertoggle
+	url = git://github.com/jeffkreeftmeijer/vim-numbertoggle.git
