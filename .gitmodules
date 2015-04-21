@@ -50,3 +50,6 @@
 [submodule "available/haskellConcealPlus"]
 	path = available/haskellConcealPlus
 	url = https://github.com/enomsg/vim-haskellConcealPlus
+[submodule "available/elm"]
+	path = available/elm
+	url = git@github.com:lambdatoast/elm.vim.git
