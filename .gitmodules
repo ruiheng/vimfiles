@@ -47,3 +47,6 @@
 [submodule "available/numbertoggle"]
 	path = available/numbertoggle
 	url = git://github.com/jeffkreeftmeijer/vim-numbertoggle.git
+[submodule "available/haskellConcealPlus"]
+	path = available/haskellConcealPlus
+	url = https://github.com/enomsg/vim-haskellConcealPlus
