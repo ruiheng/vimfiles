@@ -24,8 +24,7 @@ let g:load_bundles = [
 	\'surround',
 	\'repeat',
 	\'zencoding',
-	\'vimproc',
-	\'ghcmod',
+	\'numbertoggle',
 	\]
 
 let g:ghcmod_ghc_options = ['-package-db=' . expand('$HS_HOME') . '/lib/package.conf.d']
