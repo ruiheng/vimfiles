@@ -53,3 +53,6 @@
 [submodule "available/elm"]
 	path = available/elm
 	url = git@github.com:lambdatoast/elm.vim.git
+[submodule "available/haskell-vim"]
+	path = available/haskell-vim
+	url = https://github.com/raichoo/haskell-vim.git
