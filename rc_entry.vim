@@ -206,6 +206,12 @@ autocmd BufFilePost *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
 
 autocmd BufReadPre *.hs setlocal fencs=utf-8
 
+cabbrev lvim
+      \ lvim /\<lt><C-R><C-W>\>/gj
+      \ **/*<C-R>=(expand("%:e")=="" ? "" : ".".expand("%:e"))<CR>
+      \ <Bar> lw
+      \ <C-Left><C-Left><C-Left>
+
 " .................... all 'standard' settings ends here .....................
 
 " ......... some default but plugin-depending settings begins .......
