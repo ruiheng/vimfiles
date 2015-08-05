@@ -39,3 +39,5 @@ if exists('s:vimfiles_project_dir')
 	let g:vimfiles_username = 'ruiheng'
 	execute 'source ' . s:vimfiles_project_dir . '/rc_entry.vim'
 endif
+
+let g:zv_zeal_directory = "/usr/local/bin/zeal"

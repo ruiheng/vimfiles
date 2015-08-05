@@ -97,7 +97,29 @@ endif
 
 " ====== for taglist == end ==
 
-execute 'source ' . fnameescape(s:ext_vimfiles_dir) . '/load_plugins.vim'
+" execute 'source ' . fnameescape(s:ext_vimfiles_dir) . '/load_plugins.vim'
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('~/vim-vundle')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'L9'
+Plugin 'fuzzyfinder'
+Plugin 'tpope/vim-surround'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'KabbAmine/zeavim.vim'
+Plugin 'ruiheng/vim-haskell-cabal'
+Plugin 'raichoo/haskell-vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'pbrisbin/vim-syntax-shakespeare'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " some settings may depend on the plugins loaded,
 " put those settings in some files in a special dir,
@@ -205,6 +227,17 @@ autocmd BufEnter *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
 autocmd BufFilePost *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
 
 autocmd BufReadPre *.hs setlocal fencs=utf-8
+
+" to make active window more obvious
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cul
+    autocmd WinEnter * set number
+    autocmd WinEnter * set relativenumber
+    autocmd WinLeave * set nocul
+    autocmd WinLeave * set nonumber
+    autocmd WinLeave * set norelativenumber
+augroup End
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
