@@ -116,6 +116,8 @@ Plugin 'ruiheng/vim-haskell-cabal'
 Plugin 'raichoo/haskell-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
