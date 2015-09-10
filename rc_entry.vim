@@ -208,6 +208,8 @@ set sessionoptions-=blank
 " always persist Vim's window size
 set sessionoptions+=resize
 
+let mapleader = ","
+
 " see
 " http://vim.1045645.n5.nabble.com/How-to-store-the-color-scheme-td1172369.html
 nmap <F6> :exec ":wa \| mksession! " . v:this_session<CR>
