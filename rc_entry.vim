@@ -1,6 +1,7 @@
 "put must frequently changed items on top
 
 let s:ext_vimfiles_dir = expand('<sfile>:h')
+let s:vundle_bundle_dir = expand('~/vim-vundle')
 
 function s:source_if_readable(filename)
 	if filereadable(a:filename)
@@ -15,6 +16,14 @@ function s:if_bundle_enabled(bundle_dirname)
 		endif
 	endfor
 	if isdirectory(s:ext_vimfiles_dir . '/bundle/'. a:bundle_dirname)
+		return 1
+	else
+		return 0
+	endif
+endfunction
+
+function s:if_vundle_bundle_enabled(bundle_dirname)
+	if isdirectory(s:vundle_bundle_dir . '/' .  a:bundle_dirname)
 		return 1
 	else
 		return 0
@@ -102,7 +111,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-call vundle#begin('~/vim-vundle')
+call vundle#begin(s:vundle_bundle_dir)
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -118,6 +127,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -181,6 +191,9 @@ endif
         set statusline+=%h%m%r%w                     " status flags  
         set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type  
         set statusline+=%=                           " right align remainder  
+	if s:if_vundle_bundle_enabled('fugitive') || s:if_vundle_bundle_enabled('vim-fugitive')
+            set statusline+=%{fugitive#statusline()} " show git branch
+	endif
         set statusline+=0x%-8B                       " character value  
         set statusline+=%-14(%l,%c%V%)               " line, character  
         set statusline+=%<%P                         " file position  
@@ -251,23 +264,31 @@ cabbrev lvim
 
 " ......... some default but plugin-depending settings begins .......
 
-if s:if_bundle_enabled('haskellmode')
+if s:if_vundle_bundle_enabled('haskellmode')
 	au BufEnter *.hs compiler ghc
 	call s:load_bundle_settings('haskellmode')
 endif
 
-if s:if_bundle_enabled('fuzzyfinder')
+if s:if_vundle_bundle_enabled('fuzzyfinder')
 	nmap <leader>fb :FufBuffer<cr>
 	nmap <leader>ff :FufFile<cr>
 endif
 
-if s:if_bundle_enabled('YankRing')
+if s:if_vundle_bundle_enabled('YankRing')
 	nnoremap <silent> <F11> :YRShow<CR>
 endif
 
-if s:if_bundle_enabled('haskell-cabal')
+if s:if_vundle_bundle_enabled('haskell-cabal') || s:if_vundle_bundle_enabled('vim-haskell-cabal')
 	nmap <F8> <F6>:Cabal build<CR>
 	imap <F8> <ESC><F8>
+endif
+
+if s:if_vundle_bundle_enabled('fugitive') || s:if_vundle_bundle_enabled('vim-fugitive')
+	nmap <leader>gs :Gstatus<CR>
+	nmap <leader>gd :Gdiff<CR>
+	nmap <leader>gc :Gcommit<CR>
+	nmap <leader>gl :Glog<CR>
+	nmap <leader>gp :Git push<CR>
 endif
 
 " ......... some 'standard' but plugin-dependent settings ends .......
