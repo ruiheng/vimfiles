@@ -128,6 +128,7 @@ Plugin 'pbrisbin/vim-syntax-shakespeare'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'spf13/vim-colors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
