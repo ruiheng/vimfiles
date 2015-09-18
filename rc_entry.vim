@@ -118,6 +118,8 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'L9'
 Plugin 'fuzzyfinder'
+Plugin 'tpope/vim-repeat'
+Plugin 'visualrepeat'
 Plugin 'tpope/vim-surround'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 " Plugin 'KabbAmine/zeavim.vim'
@@ -134,7 +136,8 @@ Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'bitc/vim-hdevtools'
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'kshenoy/vim-signature'
 
 " All of your Plugins must be added before the following line
@@ -282,6 +285,11 @@ endif
 if s:if_vundle_bundle_enabled('fuzzyfinder')
 	nmap <leader>fb :FufBuffer<cr>
 	nmap <leader>ff :FufFile<cr>
+endif
+
+if s:if_vundle_bundle_enabled('vim-easy-align')
+	vmap <Enter> <Plug>(EasyAlign)
+	nmap ga <Plug>(EasyAlign)
 endif
 
 if s:if_vundle_bundle_enabled('YankRing')
