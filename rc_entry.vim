@@ -277,6 +277,10 @@ cabbrev lvim
 
 " ......... some default but plugin-depending settings begins .......
 
+if s:if_vundle_bundle_enabled('ctrlp')
+	let g:ctrlp_open_new_file = 'r'
+endif
+
 if s:if_vundle_bundle_enabled('haskellmode')
 	au BufEnter *.hs compiler ghc
 	call s:load_bundle_settings('haskellmode')
