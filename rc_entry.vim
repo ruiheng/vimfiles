@@ -255,15 +255,15 @@ autocmd BufFilePost *.hamlet setlocal expandtab si | call MySetLocalTabStop(4)
 autocmd BufReadPre *.hs setlocal fencs=utf-8
 
 " to make active window more obvious
-augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * set cul
-    autocmd WinEnter * set number
-    autocmd WinEnter * set relativenumber
-    autocmd WinLeave * set nocul
-    autocmd WinLeave * set nonumber
-    autocmd WinLeave * set norelativenumber
-augroup End
+" augroup BgHighlight
+"     autocmd!
+"     autocmd WinEnter * set cul
+"     autocmd WinEnter * set number
+"     autocmd WinEnter * set relativenumber
+"     autocmd WinLeave * set nocul
+"     autocmd WinLeave * set nonumber
+"     autocmd WinLeave * set norelativenumber
+" augroup End
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
