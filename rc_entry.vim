@@ -139,6 +139,7 @@ Plugin 'bitc/vim-hdevtools'
 " Plugin 'godlygeek/tabular'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'kshenoy/vim-signature'
+Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
