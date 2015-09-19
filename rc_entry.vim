@@ -271,11 +271,15 @@ cabbrev lvim
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
 
+if filereadable(expand('*.cabal'))
+	set wig+=*.o,*.hi,*.dyn_hi,*.dyn_o,*/dist/*
+endif
+
 " .................... all 'standard' settings ends here .....................
 
 " ......... some default but plugin-depending settings begins .......
 
-if s:if_vundle_bundle_enabled('ctrlp')
+if s:if_vundle_bundle_enabled('ctrlp.vim')
 	let g:ctrlp_open_new_file = 'r'
 endif
 
