@@ -281,6 +281,12 @@ endif
 
 if s:if_vundle_bundle_enabled('ctrlp.vim')
 	let g:ctrlp_open_new_file = 'r'
+	" nmap <leader>p :CtrlP<cr>
+	let g:ctrlp_map = '<leader>p'
+	" Easy bindings for its various modes
+	nmap <leader>bb :CtrlPBuffer<cr>
+	nmap <leader>bm :CtrlPMixed<cr>
+	nmap <leader>bs :CtrlPMRU<cr>
 endif
 
 if s:if_vundle_bundle_enabled('vim-airline')
@@ -298,6 +304,9 @@ if s:if_vundle_bundle_enabled('vim-airline')
 	nmap <leader>7 <Plug>AirlineSelectTab7
 	nmap <leader>8 <Plug>AirlineSelectTab8
 	nmap <leader>9 <Plug>AirlineSelectTab9
+
+	nmap <leader>l :bnext<CR>
+	nmap <leader>h :bprevious<CR>
 endif
 
 if s:if_vundle_bundle_enabled('haskellmode')
@@ -365,6 +374,14 @@ if s:if_vundle_bundle_enabled('tagbar')
 	    \ }
 	\ }
 	nmap <leader>tb :TagbarToggle<CR>
+endif
+
+if s:if_vundle_bundle_enabled('syntastic')
+	let g:syntastic_mode_map = {
+		\ "mode": "passive",
+		\ "active_filetypes": [],
+		\ "passive_filetypes": []
+		\ }
 endif
 
 " ......... some 'standard' but plugin-dependent settings ends .......
